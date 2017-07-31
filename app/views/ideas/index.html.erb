@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Name</th>
       <th>Description</th>
       <th>Picture</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @ideas.each do |idea| %>
       <tr>
+        <td><%= image_tag idea.picture_url(:thumb) if idea.picture.present? %></td>
         <td><%= idea.name %></td>
         <td><%= idea.description %></td>
         <td><%= idea.picture %></td>
