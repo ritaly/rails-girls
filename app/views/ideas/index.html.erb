@@ -1,6 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Ruby on Rails app with ideas</h1>
+<div class="row">
+<div class="col-lg-12">
+ <div class="pull-right">
+    <%= link_to 'Add New Idea!!!', new_idea_path, :class => "btn btn-warning" %>
+  </div>
+  </div>
+</div>
+</br>
+<% @ideas.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |idea| %>
+      <div class="col-md-4">
+        <%= image_tag idea.picture_url, width: '100%' if idea.picture.present? %>
+        <h4><%= link_to idea.name, idea %></h4>
+        <%= idea.description %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<br />
+
+<pre> Actions for listed images: </pre>
+<br />
+
 
 <table>
   <thead>
@@ -30,4 +54,4 @@
 
 <br>
 
-<%= link_to 'Add New Idea!!!', new_idea_path, :class => "btn btn-warning" %>
+
